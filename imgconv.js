@@ -3,8 +3,9 @@ const fs = require('fs')
 const cp = require('child_process')
 
 // usage: node imgconv.js <rawprogram0.xml> <IMAGE> <outputFile>
+// Nodejs v5.2.0
 
-var programs = new XML(fs.readFileSync('./rawprogram0.xml', {encoding: 'binary'})).getByTagName('program');
+var programs = new XML(fs.readFileSync(arguments[0], {encoding: 'binary'})).getByTagName('program');
 
 var n = programs.length;
 
@@ -16,8 +17,8 @@ function spawnSync(a, b, c){
 for(var i=0;i<n;++i){
 	var prog = programs[i];
 	var out = spawnSync('dd', [
-			'if=' + 10586.63.0115.3063.RTF.Retail.FFU',
-			'of=/cygdrive/c/tmp/tmp.img',
+			'if=' + arguments[1],
+			'of=' + arguments[2],
 			'bs=' + prog.SECTOR_SIZE_IN_BYTES,
 			'count=' + prog.num_partition_sectors,
 			'skip=' + prog.file_sector_offset,
